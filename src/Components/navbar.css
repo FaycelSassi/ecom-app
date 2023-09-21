@@ -1,0 +1,43 @@
+/* DESKTOP NAV */
+
+nav,
+.nav-links {
+  display: flex;
+}
+
+nav {
+  justify-content: space-around;
+  align-items: center;
+  height: 17vh;
+}
+
+.nav-links {
+  gap: 2rem;
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+.link {
+  color: black;
+  font-size: 1.5rem;
+  text-decoration: none;
+  text-decoration-color: white;
+}
+
+.link:hover {
+  color: rgb(78, 77, 77);
+  text-decoration:underline;
+  text-underline-offset: 1rem;
+  text-decoration-color: rgb(181, 181, 181);
+}
+
+.logo {
+  font-size: 2rem;
+}
+
+.logo:hover {
+  cursor: default;
+}
+#desktop-nav {
+  background-image: linear-gradient(to right, #d21034, #e85c87, #e999c8, #e9cff0, #ffffff);
+}

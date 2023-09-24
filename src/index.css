@@ -31,4 +31,8 @@ li {
 }
 .body {
   display: flex;
+  /* overflow: hidden; */
+}
+.prods-container {
+  overflow: auto;
 }

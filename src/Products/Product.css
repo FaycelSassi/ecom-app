@@ -17,6 +17,12 @@
   margin-bottom: 1rem;
 }
 
+@media screen and (max-width: 600px){ 
+  .card-img {
+    width: 6rem;
+  }
+}
+
 .card-title {
   margin-bottom: 1rem;
 }

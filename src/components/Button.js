@@ -1,6 +1,6 @@
 const Button = ({ onClickHandler, value, title }) => {
   return (
-    <button onClick={onClickHandler} value={value} className="btns">
+    <button onClick={onClickHandler} value={value} name="company" className="btns">
       {title}
     </button>
   );

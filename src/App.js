@@ -10,7 +10,12 @@ import Footer from "./Footer/footer";
 import "./index.css";
 
 function App() {
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState({
+    company: "",
+    color: "",
+    category: "",
+    newPrice: ""
+  });
 
   // ----------- Input Filter -----------
   const [query, setQuery] = useState("");
@@ -25,12 +30,22 @@ function App() {
 
   // ----------- Radio Filtering -----------
   const handleChange = (event) => {
-    setSelectedCategory(event.target.value);
+    setSelectedCategory({
+      company: selectedCategory.company,
+      color: event.target?.name?.includes("color") ? event.target.value : selectedCategory.color,
+      category: event.target?.name?.includes("category") ? event.target.value : selectedCategory.category,
+      newPrice: event.target?.name?.includes("newPrice") ? event.target.value : selectedCategory.newPrice
+    });
   };
 
   // ------------ Button Filtering -----------
   const handleClick = (event) => {
-    setSelectedCategory(event.target.value);
+    setSelectedCategory({
+      company: event.target?.name?.includes("company") ? event.target.value : selectedCategory.company,
+      color: selectedCategory.color,
+      category: selectedCategory.category,
+      newPrice: selectedCategory.newPrice
+    });
   };
 
   function filteredData(products, selected, query) {
@@ -45,11 +60,12 @@ function App() {
     if (selected) {
       filteredProducts = filteredProducts.filter(
         ({ category, color, company, newPrice, title }) =>
-          category === selected ||
-          color === selected ||
-          company === selected ||
-          newPrice === selected ||
-          title === selected
+          (category === selected.category || selected.category == "") &&
+          (color === selected.color || selected.color == "") &&
+          (company === selected.company || selected.company == "") &&
+          // company === selected ||
+          (newPrice === selected.newPrice || selected.newPrice == "")
+          // (title.includes(query) || query == "")
       );
     }
 

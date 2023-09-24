@@ -8,6 +8,7 @@ import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
 import Footer from "./Footer/footer";
 import "./index.css";
+import Home from "./Home/Home";
 
 function App() {
   const [selectedCategory, setSelectedCategory] = useState({
@@ -90,16 +91,10 @@ function App() {
     <>
       <div className="container">
         <Navigation query={query} handleInputChange={handleInputChange} />
-        <div className="body">
-          <Sidebar handleChange={handleChange} />
-          <div className="prods-container">
-            <Recommended handleClick={handleClick} />
-            <Products result={result} />
-          </div>
-        </div>
+        <Home handleChange={handleChange} handleClick={handleClick} result={result}/>
         <Footer />
       </div>
-    </>
+</>
   );
 }
 

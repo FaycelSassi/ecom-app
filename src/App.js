@@ -65,7 +65,7 @@ function App() {
           (company === selected.company || selected.company == "") &&
           // company === selected ||
           (newPrice === selected.newPrice || selected.newPrice == "")
-          // (title.includes(query) || query == "")
+        // (title.includes(query) || query == "")
       );
     }
 
@@ -88,11 +88,17 @@ function App() {
 
   return (
     <>
-      <Sidebar handleChange={handleChange} />
-      <Navigation query={query} handleInputChange={handleInputChange} />
-      <Recommended handleClick={handleClick} />
-      <Products result={result} />
-      <Footer />
+      <div className="container">
+        <Navigation query={query} handleInputChange={handleInputChange} />
+        <div className="body">
+          <Sidebar handleChange={handleChange} />
+          <div className="prods-container">
+            <Recommended handleClick={handleClick} />
+            <Products result={result} />
+          </div>
+        </div>
+        <Footer />
+      </div>
     </>
   );
 }

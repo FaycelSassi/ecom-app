@@ -40,11 +40,11 @@
   background: linear-gradient(blue, crimson);
 }
 
-.sidebar-label-container:hover input ~ .checkmark {
+.sidebar-label-container:hover input~.checkmark {
   background-color: #ccc;
 }
 
-.sidebar-label-container input:checked ~ .checkmark {
+.sidebar-label-container input:checked~.checkmark {
   background-color: #2196f3;
 }
 
@@ -54,7 +54,7 @@
   display: none;
 }
 
-.sidebar-label-container input:checked ~ .checkmark:after {
+.sidebar-label-container input:checked~.checkmark:after {
   display: block;
 }
 
@@ -70,4 +70,10 @@
 .line {
   margin-top: 3rem;
   border-color: #f7f7f7;
+}
+
+.sidebar input[type=radio] {
+  border: 0px;
+  width: 100%;
+  height: 2em;
 }

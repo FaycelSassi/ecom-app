@@ -1,12 +1,10 @@
 nav {
   display: flex;
   background-image: linear-gradient(to left, #d21034, #e85c87, #e999c8, #e9cff0, #ffffff);
-  border-bottom: 2px solid #f3f3f3;
   justify-content: space-around;
   align-items: center;
   padding: 20px;
   z-index: 999;
-  margin-left: 2rem;
 }
 
 

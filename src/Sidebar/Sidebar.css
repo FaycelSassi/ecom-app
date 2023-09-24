@@ -1,6 +1,9 @@
 .sidebar {
   width: 300px;
-  /* position: fixed; */
+  height: calc(100vh - calc(81px + 50px));
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
   flex-grow: 0;
   flex-shrink: 0;
   border-right: 2px solid #e5e5e5;

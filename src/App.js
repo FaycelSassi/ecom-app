@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect  } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./Navigation/Nav";
 import products from "./db/data";
@@ -15,8 +15,9 @@ function App() {
     company: "",
     color: "",
     category: "",
-    newPrice: ""
+    newPrice: "",
   });
+  const [cartItems, setCartItems] = useState([]);
 
   // ----------- Input Filter -----------
   const [query, setQuery] = useState("");
@@ -38,6 +39,7 @@ function App() {
       newPrice: event.target?.name?.includes("newPrice") ? event.target.value : selectedCategory.newPrice
     });
   };
+  
 
   // ------------ Button Filtering -----------
   const handleClick = (event) => {
@@ -48,6 +50,15 @@ function App() {
       newPrice: selectedCategory.newPrice
     });
   };
+   // ------------ Handle AddToCart -----------
+   const handleAddToCart = (item) => {
+    const updatedCartItems = [...cartItems, item];
+    setCartItems(updatedCartItems);
+  
+    // Store updated cart items in localStorage
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+  
 
   function filteredData(products, selected, query) {
     let filteredProducts = products;
@@ -80,7 +91,9 @@ function App() {
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
+          onAddToCart={() => handleAddToCart({ img, title, newPrice })} // Pass the item data to addToCart function
         />
+        
       )
     );
   }
@@ -94,7 +107,7 @@ function App() {
         <Navigation query={query} handleInputChange={handleInputChange} />
         <Routes>
             <Route path="/" element={<Home handleChange={handleChange} handleClick={handleClick} result={result}/>} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart cartItems={cartItems}/>} />
           </Routes>     
         <Footer />
         </Router>

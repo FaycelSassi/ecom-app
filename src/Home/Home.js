@@ -3,8 +3,6 @@ import Recommended from "../Recommended/Recommended";
 import Sidebar from "../Sidebar/Sidebar";
 
 
-
-
     function Home({ handleChange, handleClick, result }) {
     return (
         <div className="body">

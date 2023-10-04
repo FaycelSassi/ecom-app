@@ -1,8 +1,7 @@
 import Products from "../Products/Products";
-import products from "../db/data";
 import Recommended from "../Recommended/Recommended";
 import Sidebar from "../Sidebar/Sidebar";
-import Card from "../components/Card";
+
 
 
 

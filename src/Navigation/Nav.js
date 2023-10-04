@@ -18,7 +18,7 @@ const Nav = ({ handleInputChange, query }) => {
         <a href="#">
           <FiHeart className="nav-icons" />
         </a>
-        <a href="">
+        <a href="/cart">
           <AiOutlineShoppingCart className="nav-icons" />
         </a>
         <a href="">

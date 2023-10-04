@@ -1,16 +1,16 @@
 import { useState } from "react";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./Navigation/Nav";
-import Products from "./Products/Products";
 import products from "./db/data";
-import Recommended from "./Recommended/Recommended";
-import Sidebar from "./Sidebar/Sidebar";
 import Card from "./components/Card";
 import Footer from "./Footer/footer";
 import "./index.css";
 import Home from "./Home/Home";
+import Cart from "./Cart/cart";
 
 function App() {
+
+
   const [selectedCategory, setSelectedCategory] = useState({
     company: "",
     color: "",
@@ -90,9 +90,14 @@ function App() {
   return (
     <>
       <div className="container">
+      <Router>
         <Navigation query={query} handleInputChange={handleInputChange} />
-        <Home handleChange={handleChange} handleClick={handleClick} result={result}/>
+        <Routes>
+            <Route path="/" element={<Home handleChange={handleChange} handleClick={handleClick} result={result}/>} />
+            <Route path="/cart" element={<Cart />} />
+          </Routes>     
         <Footer />
+        </Router>
       </div>
 </>
   );

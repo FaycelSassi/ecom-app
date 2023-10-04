@@ -37,7 +37,7 @@ const data = [
   },
   {
     img: "https://m.media-amazon.com/images/I/71oEKkghg-L._AC_UX575_.jpg",
-    title: "Nike Running Shoe",
+    title: "Adidas Running Shoe",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",
@@ -59,7 +59,7 @@ const data = [
   },
   {
     img: "https://m.media-amazon.com/images/I/71zKuNICJAL._AC_UX625_.jpg",
-    title: "Knit Ballet Flat",
+    title: "Adidas Knit Ballet Flat",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",
@@ -95,7 +95,7 @@ const data = [
 
   {
     img: "https://m.media-amazon.com/images/I/61-cBsLhJHL._AC_UY695_.jpg",
-    title: "Nike Men's Sneaker",
+    title: "Adidas Men's Sneaker",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",
@@ -274,7 +274,7 @@ const data = [
   },
   {
     img: "https://m.media-amazon.com/images/I/616sA5XUKtL._AC_UY675_.jpg",
-    title: "Chunky High Heel",
+    title: "Adidas Chunky High Heel",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",
@@ -285,7 +285,7 @@ const data = [
   },
   {
     img: "https://m.media-amazon.com/images/I/71h5+MbEK7L._AC_UY625_.jpg",
-    title: "Amore Fashion Stilettos",
+    title: "Adidas Amore Fashion Stilettos",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",
@@ -296,7 +296,7 @@ const data = [
   },
   {
     img: "https://m.media-amazon.com/images/I/61uw5RDxKQL._AC_UY625_.jpg",
-    title: "Bridal Sandals Glitter",
+    title: "Adidas Bridal Sandals Glitter",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",
@@ -307,7 +307,7 @@ const data = [
   },
   {
     img: "https://m.media-amazon.com/images/I/71yhoZP0l6L._AC_UY695_.jpg",
-    title: "Wedding Prom Bridal",
+    title: "Adidas Wedding Prom Bridal",
     star: <AiFillStar className="rating-star" />,
     reviews: "(123 reviews)",
     prevPrice: "$140,00",

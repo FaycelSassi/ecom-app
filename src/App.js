@@ -1,4 +1,4 @@
-import { useState,useEffect  } from "react";
+import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./Navigation/Nav";
 import products from "./db/data";
@@ -58,6 +58,26 @@ function App() {
     // Store updated cart items in localStorage
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
+// ------------ Handle RemoveFromCart -----------
+const handleRemoveFromCart = (itemToRemove) => {
+  // Retrieve cart items from localStorage
+  const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+  // Filter out the item to remove from the cartItems state
+  const updatedCartItems = storedCartItems.filter((item) => item.title !== itemToRemove.title);
+
+  console.log(updatedCartItems)
+
+  // Update local storage with the updated cartItems
+  localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+  // Update the cartItems state with the filtered items
+  setCartItems(updatedCartItems);
+  window.location.reload(); 
+};
+
+
+
   
 
   function filteredData(products, selected, query) {
@@ -72,11 +92,11 @@ function App() {
     if (selected) {
       filteredProducts = filteredProducts.filter(
         ({ category, color, company, newPrice, title }) =>
-          (category === selected.category || selected.category == "") &&
-          (color === selected.color || selected.color == "") &&
-          (company === selected.company || selected.company == "") &&
+          (category === selected.category || selected.category === "") &&
+          (color === selected.color || selected.color === "") &&
+          (company === selected.company || selected.company === "") &&
           // company === selected ||
-          (newPrice === selected.newPrice || selected.newPrice == "")
+          (newPrice === selected.newPrice || selected.newPrice === "")
         // (title.includes(query) || query == "")
       );
     }
@@ -91,6 +111,7 @@ function App() {
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
+
           onAddToCart={() => handleAddToCart({ img, title, newPrice })} // Pass the item data to addToCart function
         />
         
@@ -107,8 +128,8 @@ function App() {
         <Navigation query={query} handleInputChange={handleInputChange} />
         <Routes>
             <Route path="/" element={<Home handleChange={handleChange} handleClick={handleClick} result={result}/>} />
-            <Route path="/cart" element={<Cart cartItems={cartItems}/>} />
-          </Routes>     
+            <Route path="/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />   
+        </Routes>     
         <Footer />
         </Router>
       </div>

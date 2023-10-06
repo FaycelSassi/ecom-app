@@ -2,7 +2,7 @@
 import{ useEffect,useState } from "react";
 import './cart.css'
 
-const Cart = ({}) => {
+const Cart = ({onRemoveFromCart }) => {
   const [cartItems, setCartItems] = useState([]);
 // Calculate the total price using reduce and convert strings to numbers
 const totalPrice = cartItems.reduce((total, item) => {
@@ -15,40 +15,40 @@ const totalPrice = cartItems.reduce((total, item) => {
     setCartItems(storedCartItems);
   }, []);
   return (
-    <div class="cart">
+    <div className="cart">
       <main>
-      <div class="basket">
-    <div class="basket-labels">
+      <div className="basket">
+    <div className="basket-labels">
         <ul>
-          <li class="item item-heading">Item</li>
-          <li class="price">Price</li>
+          <li className="item item-heading">Item</li>
+          <li className="price">Price</li>
         </ul>
     </div>
     {cartItems.map((item, index) => (
-      <div class="basket-product"key={index}>
-      <div class="item">
-        <div class="product-image">
-          <img src={item.img} alt="Placholder Image 2" class="product-frame"/>
+      <div className="basket-product"key={index}>
+      <div className="item">
+        <div className="product-image">
+          <img src={item.img} alt="Placholder  2" className="product-frame"/>
         </div>
-        <div class="product-details">
-          <h1><strong><span class="item-quantity"></span>{item.title} </strong> </h1>
+        <div className="product-details">
+          <h1><strong><span className="item-quantity"></span>{item.title} </strong> </h1>
         </div>
       </div>
-      <div class="price">{item.newPrice}</div>
-      <div class="remove">
-        <button>Remove</button>
+      <div className="price">{item.newPrice}</div>
+      <div className="remove">
+        <button onClick={() => onRemoveFromCart(item)}>Remove</button>
       </div>
     </div>))}
     </div>
     
     <aside>
-      <div class="summary">
-        <div class="summary-total-items">{cartItems.length} Items in your Bag</div>
-        <div class="summary-subtotal">
-          <div class="subtotal-title">Total</div>
-          <div class="subtotal-value final-value" id="basket-subtotal">{totalPrice}</div>
-        <div class="summary-checkout">
-          <button class="checkout-cta">Go to Secure Checkout</button>
+      <div className="summary">
+        <div className="summary-total-items">{cartItems.length} Items in your Bag</div>
+        <div className="summary-subtotal">
+          <div className="subtotal-title">Total</div>
+          <div className="subtotal-value final-value" id="basket-subtotal">{totalPrice}</div>
+        <div className="summary-checkout">
+          <button className="checkout-cta">Go to Secure Checkout</button>
         </div>
       </div>
       </div>

@@ -38,7 +38,7 @@ export const Card = ({ img, title, star, reviews, prevPrice, newPrice,
                   onInput={handleQuantityChange}
                   className="quantity-input"
                 />
-                <button onClick={() => sendValue(quantity)}><BsFillBagFill className="bag-icon" /></button>
+                <button onClick={onAddToCart}><BsFillBagFill className="bag-icon" /></button>
               </div>
 
             </div>

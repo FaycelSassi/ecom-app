@@ -112,6 +112,7 @@ function App() {
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
+          
           onInputChange={handleInputValueChange}
           onAddToCart={() => handleAddToCart({ img, title, newPrice, receivedValue })}
         />

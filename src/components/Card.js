@@ -6,12 +6,14 @@ const Card = ({ img, title, star, reviews, prevPrice, newPrice,onInputChange, on
   const [quantity, setQuantity] = useState(1); // Initialize quantity with a default value of 1
 
   const handleQuantityChange = (event) => {
-    const newQuantity = parseInt(event.target.value);
+    const newQuantity = event.target.value;
     setQuantity(newQuantity);
-    onInputChange(newQuantity);
-    console.log("quantity");
-    console.log(newQuantity);
   };
+  const sendValue= (quant)=>{
+    onInputChange(quant);
+    onAddToCart();
+
+  }
   
   return (
     <>
@@ -37,7 +39,7 @@ const Card = ({ img, title, star, reviews, prevPrice, newPrice,onInputChange, on
                   onChange={handleQuantityChange}
                   className="quantity-input"
                 />
-                <button onClick={onAddToCart}><BsFillBagFill className="bag-icon" /></button>
+                <button onClick={() => sendValue(quantity)}><BsFillBagFill className="bag-icon" /></button>
               </div>
               
             </div>

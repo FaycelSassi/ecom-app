@@ -6,7 +6,7 @@ const Cart = ({onRemoveFromCart }) => {
   const [cartItems, setCartItems] = useState([]);
 // Calculate the total price using reduce and convert strings to numbers
 const totalPrice = cartItems.reduce((total, item) => {
-  const itemPrice = parseFloat(item.newPrice); // Convert string to float
+  const itemPrice = parseFloat(item.newPrice)*parseFloat(item.receivedValue); // Convert string to float
   return total + itemPrice;
 }, 0);
   useEffect(() => {
@@ -23,9 +23,9 @@ const totalPrice = cartItems.reduce((total, item) => {
           <li className="item item-heading">Item</li>
           <li className="price">Price</li>
           <li className="price">Quantity</li>
+          <li className="price">SubTotal</li>
         </ul>
     </div>
-    {console.log(cartItems)}
     {cartItems.map((item, index) => (
       <div className="basket-product"key={index}>
       <div className="item">
@@ -38,6 +38,7 @@ const totalPrice = cartItems.reduce((total, item) => {
       </div>
       <div className="price">{item.newPrice}</div>
       <div className="quantity">{item.receivedValue}</div>
+      <div className="quantity">{parseFloat(item.newPrice)*parseFloat(item.receivedValue)}</div>
       <div className="remove">
         <button onClick={() => onRemoveFromCart(item)}>Remove</button>
       </div>

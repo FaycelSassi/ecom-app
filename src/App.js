@@ -9,10 +9,10 @@ import Home from "./Home/Home";
 import Cart from "./Cart/cart";
 
 function App() {
-  const [receivedValue, setReceivedValue] = useState(0); // State to store the received value
-
+  const [receivedValue, setReceivedValue] = useState(1); // State to store the received value
+  var quantValue=0;
 const handleInputValueChange = (value) => {
-  setReceivedValue(value); // Update the state with the received value
+  quantValue=(value); // Update the state with the received value
 };
   const [selectedCategory, setSelectedCategory] = useState({
     company: "",
@@ -55,7 +55,10 @@ const handleInputValueChange = (value) => {
   };
    // ------------ Handle AddToCart -----------
    const handleAddToCart = (item) => {
-    console.log(item)
+    item.receivedValue=quantValue;
+    console.log(item);
+    const key=Math.random();
+    item.key=key;
     const updatedCartItems = [...cartItems, item];
     setCartItems(updatedCartItems);
   
@@ -68,9 +71,7 @@ const handleRemoveFromCart = (itemToRemove) => {
   const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
   // Filter out the item to remove from the cartItems state
-  const updatedCartItems = storedCartItems.filter((item) => item.title !== itemToRemove.title);
-
-  console.log(updatedCartItems)
+  const updatedCartItems = storedCartItems.filter((item) => item.key !== itemToRemove.key);
 
   // Update local storage with the updated cartItems
   localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
@@ -112,8 +113,9 @@ const handleRemoveFromCart = (itemToRemove) => {
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
+          
           onInputChange={handleInputValueChange}
-          onAddToCart={() => handleAddToCart({ img, title, newPrice,receivedValue })}
+          onAddToCart={() => handleAddToCart({img, title, newPrice,receivedValue })}
         />
         
       )

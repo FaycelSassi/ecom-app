@@ -9,8 +9,11 @@ import Home from "./Home/Home";
 import Cart from "./Cart/cart";
 
 function App() {
+  const [receivedValue, setReceivedValue] = useState(0); // State to store the received value
 
-
+const handleInputValueChange = (value) => {
+  setReceivedValue(value); // Update the state with the received value
+};
   const [selectedCategory, setSelectedCategory] = useState({
     company: "",
     color: "",
@@ -52,6 +55,7 @@ function App() {
   };
    // ------------ Handle AddToCart -----------
    const handleAddToCart = (item) => {
+    console.log(item)
     const updatedCartItems = [...cartItems, item];
     setCartItems(updatedCartItems);
   
@@ -78,7 +82,7 @@ const handleRemoveFromCart = (itemToRemove) => {
 
 
 
-  
+
 
   function filteredData(products, selected, query) {
     let filteredProducts = products;
@@ -95,12 +99,9 @@ const handleRemoveFromCart = (itemToRemove) => {
           (category === selected.category || selected.category === "") &&
           (color === selected.color || selected.color === "") &&
           (company === selected.company || selected.company === "") &&
-          // company === selected ||
           (newPrice === selected.newPrice || selected.newPrice === "")
-        // (title.includes(query) || query == "")
       );
     }
-
     return filteredProducts.map(
       ({ img, title, star, reviews, prevPrice, newPrice }) => (
         <Card
@@ -111,8 +112,8 @@ const handleRemoveFromCart = (itemToRemove) => {
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
-
-          onAddToCart={() => handleAddToCart({ img, title, newPrice })} // Pass the item data to addToCart function
+          onInputChange={handleInputValueChange}
+          onAddToCart={() => handleAddToCart({ img, title, newPrice,receivedValue })}
         />
         
       )

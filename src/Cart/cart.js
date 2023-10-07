@@ -22,8 +22,10 @@ const totalPrice = cartItems.reduce((total, item) => {
         <ul>
           <li className="item item-heading">Item</li>
           <li className="price">Price</li>
+          <li className="price">Quantity</li>
         </ul>
     </div>
+    {console.log(cartItems)}
     {cartItems.map((item, index) => (
       <div className="basket-product"key={index}>
       <div className="item">
@@ -35,6 +37,7 @@ const totalPrice = cartItems.reduce((total, item) => {
         </div>
       </div>
       <div className="price">{item.newPrice}</div>
+      <div className="quantity">{item.receivedValue}</div>
       <div className="remove">
         <button onClick={() => onRemoveFromCart(item)}>Remove</button>
       </div>

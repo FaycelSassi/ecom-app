@@ -258,7 +258,10 @@ aside {
   font-size: 0.875rem;
   text-align: center;
 }
-
+#quantity{
+  width:40%;
+  height: 30%;
+}
 .summary-subtotal,
 .summary-total {
   border-top: 1px solid #ccc;

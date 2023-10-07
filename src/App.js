@@ -9,7 +9,7 @@ import Home from "./Home/Home";
 import Cart from "./Cart/cart";
 
 function App() {
-  const [receivedValue, setReceivedValue] = useState(1); // State to store the received value
+  const [receivedValue] = useState(1); // State to store the received value
   var quantValue=0;
 const handleInputValueChange = (value) => {
   quantValue=(value); // Update the state with the received value
@@ -61,7 +61,7 @@ const handleInputValueChange = (value) => {
     item.key=key;
     const updatedCartItems = [...cartItems, item];
     setCartItems(updatedCartItems);
-  
+    alert(item.title+" added to cart");
     // Store updated cart items in localStorage
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
@@ -113,7 +113,7 @@ const handleRemoveFromCart = (itemToRemove) => {
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
-          
+
           onInputChange={handleInputValueChange}
           onAddToCart={() => handleAddToCart({img, title, newPrice,receivedValue })}
         />

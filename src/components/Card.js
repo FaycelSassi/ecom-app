@@ -12,7 +12,6 @@ const Card = ({ img, title, star, reviews, prevPrice, newPrice,onInputChange, on
   const sendValue= (quant)=>{
     onInputChange(quant);
     onAddToCart();
-
   }
   
   return (

@@ -1,19 +1,27 @@
 import { BsFillBagFill } from "react-icons/bs";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
-const Card = ({ img, title, star, reviews, prevPrice, newPrice,onInputChange, onAddToCart }) => {
+export const Card = ({ img, title, star, reviews, prevPrice, newPrice,
+  onInputChange,
+  onAddToCart
+}) => {
   const [quantity, setQuantity] = useState(1); // Initialize quantity with a default value of 1
 
   const handleQuantityChange = (event) => {
-    const newQuantity = event.target.value;
-    setQuantity(newQuantity);
+    let parsed = parseInt(event.target.value)
+    setQuantity(parsed);
+    onInputChange(parsed)
   };
+<<<<<<< HEAD
   const sendValue= (quant)=>{
     onInputChange(quant);
     onAddToCart();
   }
   
+=======
+
+>>>>>>> 30950cede9065549c80f1a7e11b2c8ea90ac5fdf
   return (
     <>
       <section className="card">
@@ -30,17 +38,17 @@ const Card = ({ img, title, star, reviews, prevPrice, newPrice,onInputChange, on
             </div>
             <div className="bag">
               <div className="card-actions">
-              <input
+                <input
                   id="quantity"
                   type="number"
                   min="1"
                   value={quantity}
-                  onChange={handleQuantityChange}
+                  onInput={handleQuantityChange}
                   className="quantity-input"
                 />
-                <button onClick={() => sendValue(quantity)}><BsFillBagFill className="bag-icon" /></button>
+                <button onClick={onAddToCart}><BsFillBagFill className="bag-icon" /></button>
               </div>
-              
+
             </div>
           </section>
         </div>

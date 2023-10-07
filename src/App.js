@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./Navigation/Nav";
 import products from "./db/data";
@@ -9,7 +9,7 @@ import Home from "./Home/Home";
 import Cart from "./Cart/cart";
 
 function App() {
-  const [receivedValue] = useState(1); // State to store the received value
+  const [receivedValue, setReceivedValue] = useState(1); // State to store the received value
   var quantValue=0;
 const handleInputValueChange = (value) => {
   quantValue=(value); // Update the state with the received value
@@ -42,7 +42,7 @@ const handleInputValueChange = (value) => {
       newPrice: event.target?.name?.includes("newPrice") ? event.target.value : selectedCategory.newPrice
     });
   };
-  
+
 
   // ------------ Button Filtering -----------
   const handleClick = (event) => {
@@ -53,33 +53,32 @@ const handleInputValueChange = (value) => {
       newPrice: selectedCategory.newPrice
     });
   };
-   // ------------ Handle AddToCart -----------
-   const handleAddToCart = (item) => {
-    item.receivedValue=quantValue;
-    console.log(item);
-    const key=Math.random();
-    item.key=key;
+  // ------------ Handle AddToCart -----------
+  const handleAddToCart = (item) => {
+    console.log(item)
     const updatedCartItems = [...cartItems, item];
     setCartItems(updatedCartItems);
-    alert(item.title+" added to cart");
+  
     // Store updated cart items in localStorage
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
-// ------------ Handle RemoveFromCart -----------
-const handleRemoveFromCart = (itemToRemove) => {
-  // Retrieve cart items from localStorage
-  const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+  // ------------ Handle RemoveFromCart -----------
+  const handleRemoveFromCart = (itemToRemove) => {
+    // Retrieve cart items from localStorage
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  // Filter out the item to remove from the cartItems state
-  const updatedCartItems = storedCartItems.filter((item) => item.key !== itemToRemove.key);
+    // Filter out the item to remove from the cartItems state
+    const updatedCartItems = storedCartItems.filter((item) => item.title !== itemToRemove.title);
 
-  // Update local storage with the updated cartItems
-  localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+    console.log(updatedCartItems)
 
-  // Update the cartItems state with the filtered items
-  setCartItems(updatedCartItems);
-  window.location.reload(); 
-};
+    // Update local storage with the updated cartItems
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+
+    // Update the cartItems state with the filtered items
+    setCartItems(updatedCartItems);
+    window.location.reload();
+  };
 
 
 
@@ -115,9 +114,9 @@ const handleRemoveFromCart = (itemToRemove) => {
           newPrice={newPrice}
 
           onInputChange={handleInputValueChange}
-          onAddToCart={() => handleAddToCart({img, title, newPrice,receivedValue })}
+          onAddToCart={() => handleAddToCart({ img, title, newPrice, receivedValue })}
         />
-        
+
       )
     );
   }
@@ -127,16 +126,16 @@ const handleRemoveFromCart = (itemToRemove) => {
   return (
     <>
       <div className="container">
-      <Router>
-        <Navigation query={query} handleInputChange={handleInputChange} />
-        <Routes>
-            <Route path="/" element={<Home handleChange={handleChange} handleClick={handleClick} result={result}/>} />
-            <Route path="/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart}/>} />   
-        </Routes>     
-        <Footer />
+        <Router>
+          <Navigation query={query} handleInputChange={handleInputChange} />
+          <Routes>
+            <Route path="/" element={<Home handleChange={handleChange} handleClick={handleClick} result={result} />} />
+            <Route path="/cart" element={<Cart cartItems={cartItems} onRemoveFromCart={handleRemoveFromCart} />} />
+          </Routes>
+          <Footer />
         </Router>
       </div>
-</>
+    </>
   );
 }
 

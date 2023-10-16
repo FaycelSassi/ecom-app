@@ -13,15 +13,6 @@ export const Card = ({ img, title, star, reviews, prevPrice, newPrice,
     setQuantity(parsed);
     onInputChange(parsed)
   };
-<<<<<<< HEAD
-  const sendValue= (quant)=>{
-    onInputChange(quant);
-    onAddToCart();
-  }
-  
-=======
-
->>>>>>> 30950cede9065549c80f1a7e11b2c8ea90ac5fdf
   return (
     <>
       <section className="card">
